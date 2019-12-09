@@ -1,0 +1,45 @@
+#include <iostream> 
+
+using namespace std;
+struct Dates
+{
+
+	int month, day, year;
+}d[2];
+
+void date_enter() 
+{
+	cout << "Enter your dates as (dd/mm/yy)" << endl;
+	for (int i = 1; i <= 2; i++) 
+	{
+		cout << "Day : ";
+		cin >> d[i].day;
+		cout << endl;
+		cout << "Month : ";
+		cin >> d[i].month;
+		cout << endl;
+		cout << "Year : ";
+		cin >> d[i].year;
+		cout << endl;
+	}
+
+}
+
+void Date_Check() 
+{
+	if (d[1].day == d[2].day && d[1].month == d[2].month && d[1].year == d[2].year)
+	{
+		cout << "Dates are equal" << endl;
+	}
+	else
+	{
+		cout << "Dates are not equal" << endl;
+	}
+}
+
+void main()
+{
+	date_enter();
+	Date_Check();
+	
+}
