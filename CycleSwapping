@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+void CycleSwap(int *a,int* b,int* c) 
+{
+
+	int temp;
+	temp = *b;
+	*b = *a;
+	*a = *c;
+	*c = temp;
+
+}
+void main() 
+{	
+	int a, b, c;
+	cout << "Please enter your three numbers : (a b c) : ";
+	cin >> a >> b >> c;
+	CycleSwap(&a, &b, &c);
+	cout << a << " " << b << " " << c << endl;
+	cout << "The numbers have been cycled" << endl;
+
+}
