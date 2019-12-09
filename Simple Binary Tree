@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+struct Tree 
+{
+	int d;
+	Tree* left;
+	Tree* right;
+};
+
+Tree* root = NULL;
+
+Tree* newnode(int data) 
+{
+	Tree* root = new Tree;
+
+	root->d = data;
+
+	root->left = NULL;
+	root->right = NULL;
+	return root;
+}
+
+void display() 
+{
+	cout << "     Tree" << endl << endl;
+	cout <<"       " << root->d << endl;
+	cout << "    /" << "      \\ " << endl;
+	cout << "   " << root->left->d << "      " << root->right->d << endl;
+	cout << "  /" << "  \\" << "    /" << "  \\  " << endl;
+	cout << " " << root->left->left->d << "  " << root->left->right->d << " " << "Null" << "  " << "Null" << endl;
+
+
+
+}
+void main() 
+{
+	 
+	root = newnode(1);
+
+	root->left=newnode(10);
+	root->right=newnode(23);
+
+	root->left->left = newnode(34);
+	root->left->right = newnode(33);
+
+	display();
+
+}
