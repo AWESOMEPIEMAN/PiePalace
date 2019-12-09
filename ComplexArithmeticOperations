@@ -1,0 +1,47 @@
+#include <iostream> 
+
+using namespace std;
+struct complex
+{
+
+	int real, img;
+};
+int main()
+{
+	complex a, b, A,S,M;
+	cout << "Enter a and b where a + ib is the first complex number.";
+	cout << "\na = ";
+	cin >> a.real;
+	cout << "b = ";
+	cin >> a.img;
+	cout << "Enter c and d where c + id is the second complex number.";
+	cout << "\nc = ";
+	cin >> b.real;
+	cout << "d = ";
+	cin >> b.img;
+
+	A.real = a.real + b.real;
+	A.img = a.img + b.img;
+
+	S.real = a.real - b.real;
+	S.img = a.img - b.img;
+
+	M.real = a.real * b.real;
+	M.img = a.img * b.img;
+
+	if (A.img >= 0)
+		cout << "Sum of two complex numbers = " << A.real << " + " << A.img << "i" << endl;
+	else
+		cout << "Sum of two complex numbers = " << A.real << " " << A.img << "i" << endl;
+
+	if (S.img >= 0)
+		cout << "Sub of two complex numbers = " << S.real << " + " << S.img << "i" << endl;
+	else
+		cout << "Sub of two complex numbers = " << S.real << " " << S.img << "i";
+
+	if (M.img >= 0)
+		cout << "Product of two complex numbers = " << M.real << " * " << M.img << "i";
+	else
+		cout << "Product of two complex numbers = " << M.real << " " << M.img << "i";
+	return 0;
+}
