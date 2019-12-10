@@ -1,0 +1,112 @@
+#include <iostream>
+
+using namespace std;
+
+struct Tree
+{
+
+	Tree* left;
+	Tree* right;
+	int d;
+};
+
+Tree *root = NULL;
+
+struct TreeTwo
+{
+	TreeTwo *left2;
+	TreeTwo *right2;
+	int d2;
+
+};
+
+void Insert(int n)
+{
+	Tree *node = new Tree;
+	Tree *parent;
+
+	node->d = n;
+	node->left = NULL;
+	node->right = NULL;
+	parent = NULL;
+
+	if (root == NULL)
+	{
+		root = node;
+	}
+	else
+	{
+		Tree *curr;
+		curr = root;
+		while (curr)
+		{
+			parent = curr;
+			if (node->d > curr->d)
+				curr = curr->right;
+			else
+				curr = curr->left;
+		}
+
+		if (node->d < parent->d)
+			parent->left = node;
+		else
+			parent->right = node;
+	
+	}
+ 
+}
+
+
+void postorder(Tree* p)
+{
+	if (p != NULL)
+	{
+		if (p->left) 
+			postorder(p->left);
+		if (p->right) 
+			postorder(p->right);
+		cout << " " << p->d << " ";
+	}
+	else return;
+}
+
+void printPostorder(Tree* node)
+{
+	if (node == NULL)
+		return;
+	else
+	printPostorder(node->left);
+
+	printPostorder(node->right);
+
+	
+	cout <<" "<< node->d << " ";
+}
+
+
+
+void main()
+{
+	Insert(45);
+	Insert(16);
+	Insert(10);
+	Insert(3);
+	Insert(4);
+	Insert(9);
+	Insert(6);
+	Insert(1);
+	Insert(48);
+	Insert(32);
+
+	printPostorder(root);
+	cout << endl;
+	postorder(root);
+	
+	Delete(root);
+	cout << endl;
+	postorder(root);
+
+
+	system("pause");
+
+}
