@@ -1,0 +1,93 @@
+#include <iostream>
+
+using namespace std;
+
+int const SIZE = 4; //decalring the SIZE of array 
+
+struct Stack 
+{
+
+	int data[SIZE];
+
+};
+
+int top = -1;   //top is the starting point of any stack and it is initialized to -1
+Stack obj;
+
+void Push(int a) //Push function to push the data into the stack 
+{
+	if (top == SIZE)
+	{
+		cout << "The stack is full !" << endl;
+		cout << endl;
+	}
+	else {
+		top++;
+		obj.data[top] = a;
+	}
+}
+
+void Pop() //Pop function to pop the data that is on top of the stack according to LIFO
+{
+	int d;
+	if (top == -1)
+	{
+     cout << "The stack is empty !" << endl;
+	}
+	else
+	{
+		d = obj.data[top];
+		cout << "The data : " << obj.data[top] << " has been popped from the stack" << endl;
+		top--;
+	}
+
+}
+
+void Dispay() 
+{
+	if (top == -1)
+	{
+		cout << "The stack is empty." << endl;
+	}
+
+	else
+	{
+		for (int i = top; i >= 0; i--)
+		{
+			cout << "Data [" << i << "]" << obj.data[i] << endl;
+		}
+
+
+	}
+}
+
+void main() //Driver function
+{
+	int choice;
+	int n;
+	do {
+		cout << "1.Push" << endl;
+		cout << "2.Pop" << endl;
+		cout << "3.Display" << endl;
+		cout << "Press any number above 3 to exit :)" << endl;
+		cout << "Please enter your desired option : ";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			cout << "Please enter your data : ";
+			cin >> n;
+			cout << endl;
+			Push(n);
+			break;
+		case 2:
+			Pop();
+			break;
+		case 3:
+			Dispay();
+		
+	}
+	} while (choice<=4);
+
+	
+}
