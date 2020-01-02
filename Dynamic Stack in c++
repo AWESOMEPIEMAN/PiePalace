@@ -1,0 +1,82 @@
+#include <iostream>
+
+using namespace std;
+
+ 
+
+struct Stack 
+{
+	int data;
+	Stack* next;
+};
+
+Stack* top = NULL;  
+
+
+void Push(int a) 
+{
+		Stack* Temp = new Stack;
+		Temp->data = a;
+		Temp->next = top;
+		top = Temp;
+}
+
+void Pop() //Pop function to pop the data that is on top of the stack according to LIFO
+{
+	
+	if (top !=NULL )
+	{
+		Stack* Temp = top;
+		top = top->next;
+		cout << "The data " << Temp->data << " has been deleted" << endl;
+		delete Temp;
+  
+	}
+	else
+	{
+		cout << "The stack is empty !" << endl;
+	}
+
+}
+
+void Dispay() 
+{
+	Stack* temp = top;
+
+	while (temp != NULL) 
+	{
+		cout << "The data is : " << temp->data << endl;
+		temp=temp->next;
+	}
+}
+
+void main() //Driver function
+{
+	int choice;
+	int n;
+	do {
+		cout << "1.Push" << endl;
+		cout << "2.Pop" << endl;
+		cout << "3.Display" << endl;
+		cout << "Press any number above 3 to exit :)" << endl;
+		cout << "Please enter your desired option : ";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			cout << "Please enter your data : ";
+			cin >> n;
+			cout << endl;
+			Push(n);
+			break;
+		case 2:
+			Pop();
+			break;
+		case 3:
+			Dispay();
+		
+	}
+	} while (choice<=4);
+
+	
+}
