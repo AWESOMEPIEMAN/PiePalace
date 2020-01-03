@@ -1,0 +1,90 @@
+#include <iostream>
+
+using namespace std;
+
+ 
+
+struct Queue
+{
+	int data;
+	Queue* next;
+};
+
+Queue* front = NULL;  
+Queue* rear = NULL;
+
+
+void Enqueue(int a) 
+{
+		Queue* Temp = new Queue;
+		Temp->data = a;
+		Temp->next = NULL;
+		if (rear == NULL)
+		{
+			rear = Temp;
+			front = Temp;
+		}
+		else
+		{
+			rear->next = Temp;
+			rear = Temp;
+		}
+}
+
+
+void Dequeue() //FIFO principle
+{
+	
+	if (front != NULL)
+	{
+		Queue* temp = front;
+		cout << "The data : " << front->data << " has been deleted " << endl;
+		front = front->next;
+		delete temp;
+		if (front == NULL)
+			rear = NULL;
+	}
+	else
+		cout << "Queue Empty..";
+}
+
+void Dispay() 
+{
+	Queue* temp = front;
+	while (temp != NULL)
+	{
+		cout << temp->data << endl;
+		temp = temp->next;
+	}
+}
+
+void main() //Driver function
+{
+	int choice;
+	int n;
+	do {
+		cout << "1.Enqueue" << endl;
+		cout << "2.Dequeue" << endl;
+		cout << "3.Display" << endl;
+		cout << "Press any number above 3 to exit :)" << endl;
+		cout << "Please enter your desired option : ";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			cout << "Please enter your data : ";
+			cin >> n;
+			cout << endl;
+			Enqueue(n);
+			break;
+		case 2:
+			Dequeue();
+			break;
+		case 3:
+			Dispay();
+		
+	}
+	} while (choice<=4);
+}
+
+
